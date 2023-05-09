@@ -1,0 +1,23 @@
+class Solution {
+    public int longestPalindrome(String s) {
+
+        int oddCount = 0;
+        HashMap<Character,Integer> hm = new HashMap<>();
+
+        for(char ch : s.toCharArray()){
+             hm.put(ch,hm.getOrDefault(ch,0)+1);
+           
+           if(hm.get(ch) % 2 == 1){
+               oddCount++;
+           }else{
+               oddCount--;
+           }
+        }
+
+        if(oddCount >1){
+            return s.length()-oddCount+1;
+        }
+    return s.length();
+        
+    }
+}
