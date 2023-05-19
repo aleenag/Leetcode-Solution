@@ -1,0 +1,41 @@
+class Solution {
+    public String shortestCompletingWord(String licensePlate, String[] words) {
+        licensePlate = licensePlate.toLowerCase();
+        
+        int[] licensePlateCount = new int[26];
+        for(int  i = 0;i<licensePlate.length();i++){
+           char c = licensePlate.charAt(i);
+           if(c >= 'a' && c <= 'z'){
+               licensePlateCount[c - 'a']++;
+           }
+        }
+
+    int minWordLengthIndex = 0;
+    int minWordLength = Integer.MAX_VALUE;
+    for(int i = 0;i<words.length;i++){
+        int[] wordCharCount = new int[26];
+        for(int j = 0;j<words[i].length();j++){
+            wordCharCount[words[i].charAt(j) - 'a']++;
+        }
+      
+      int counter = 0;
+      for(int j = 0;j<26;j++){
+          counter++;
+          if(licensePlateCount[j] > wordCharCount[j]){
+              counter = 0;
+              break;
+          }
+      }
+
+      if(counter == 26 && minWordLength > words[i].length()){
+          minWordLength = words[i].length();
+          minWordLengthIndex = i;
+      }
+    
+    }
+        
+   return words[minWordLengthIndex];
+
+        
+    }
+}
