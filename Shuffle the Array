@@ -1,0 +1,15 @@
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+
+        int[] result = new int[2*n];
+        int i = 0;
+        int left = 0;
+        int right = n;
+
+        while(left<n){
+            result[i++] = nums[left++];
+            result[i++] = nums[right++];
+        }
+        return result;
+    }
+}
