@@ -1,3 +1,19 @@
+USING ASCII VALUES OF + AND - 
+
+class Solution {
+    public int finalValueAfterOperations(String[] operations) {
+
+        int value = 0;
+        for(String str : operations){
+            value += (44 - str.charAt(1));
+        }
+        return value;
+        
+    }
+}
+
+
+
 class Solution {
     public int finalValueAfterOperations(String[] operations) {
 
