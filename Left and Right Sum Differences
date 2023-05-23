@@ -1,0 +1,48 @@
+class Solution {
+    public int[] leftRightDifference(int[] nums) {
+
+        int[] ans = new int[nums.length];
+        int left_sum = 0;
+        int right_sum = 0;
+        for(int i=0;i<nums.length;i++){
+            for(int j = i+1;j<nums.length;j++){
+                right_sum+=nums[j];
+            }
+            for(int k = i-1;k>=0;k--){
+                left_sum+=nums[k];
+            }
+          ans[i] = Math.abs(left_sum - right_sum);
+          right_sum = 0;
+          left_sum = 0;
+        }
+        return ans;
+        
+    }
+}
+
+BEST APPROACH
+
+class Solution {
+    public int[] leftRightDifference(int[] nums) {
+
+       
+        int left_sum = 0;
+        int right_sum = 0;
+
+        for(int i : nums){
+            right_sum+=i;
+        }
+        for(int i = 0;i<nums.length;i++){
+           int val = nums[i];
+            right_sum-= val;
+            nums[i] = Math.abs(left_sum - right_sum);  
+            left_sum += val;
+
+
+        }
+        
+        return nums;
+        
+    }
+}
+
